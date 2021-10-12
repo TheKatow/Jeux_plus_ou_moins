@@ -1,0 +1,62 @@
+*{
+    background-color: lightseagreen;
+    padding: 1%;
+    margin: 1%;
+}
+header {
+    background-color: lightskyblue;
+}
+h1 {
+    text-align: center;
+    background-color: lightskyblue;
+    color:black;
+    text-shadow:whitesmoke 1px 1px ;
+}
+input{
+    margin: 0.1rem;
+}
+label{
+    font: 1rem 'Fira Sans', sans-serif;
+}
+#MonNombre{
+   background-color: burlywood; 
+   border-radius: 5%;
+   border-color: black;
+   box-shadow: black 5px 5px;
+}
+[id^="btn"]{
+    background-color: brown;
+    padding: 5%;
+    box-shadow: black 2px 2px;
+    width: 215px;
+}
+[id^="btn"]:hover{
+    color: burlywood;
+}
+[id^="btn"]:active{
+    color: black;
+
+}
+#reset{
+    background-color: burlywood;
+    padding: 1%;
+    box-shadow: black 2px 2px;
+    margin-left: 100px;
+    color: burlywood;
+}
+#reset:hover{
+    color: black;
+}
+#conteneur{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    height: 400px;
+}
+#resultat{
+    justify-content: center;
+    background-color: rgb(50, 255,100);
+    overflow-y: auto;
+    height: 400px;
+    width: 213px;
+}
