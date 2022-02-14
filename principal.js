@@ -1,27 +1,39 @@
-/*
-Type : fonction
-Nom : nombre_plus_ou_moins
-Entrées : monNombre entier (nombre dont on veut connaitre si il est plus grand ou plus petit que le chiffre généré aléatoirement)
-Sortie : iresultat (si le chiffre tapé est plus petit ou plus grand)
-*/
+let inombre;
+let iCpt = 0;
 
-function generer_mon_nombre_aleatoire() {
-    var iNombre = Math.floor(Math.random());
-    return iNombre;
-}
-function compare() {
-    var MonNombre = parseInt(document.getElementById("MonNombre").value);
-    if (iNombre > MonNombre) {
-    document.getElementById("resultat").innerText += MonNombre +" est trop petit" +"\n"; 
+document.getElementById('resultat').style.display = 'none'; // au début la zone Resultat est cachée
+document.getElementById('btnJouer').style.display = 'block'; // montre le bouton Jouer
+document.getElementById('btnValidez').style.display = 'none'; // cache le bouton Jouer
+
+function generation_nombre_aleatoire() {
+    inombre = Math.floor(Math.random() * 99) + 1;
+    document.getElementById('resultat').style.display = 'block'; // affiche la div resultat
+    document.getElementById('btnJouer').style.display = 'none'; // cache le bouton Jouer
+    document.getElementById('btnValidez').style.display = 'block'; // cache le bouton Jouer
+    document.getElementById('resultat').innerHTML = "";
+    document.getElementById('MonNombre').value = "";
+    console.log(inombre);
+    return inombre
+};
+
+function comparaison() {
+    let iNombreSaisie = parseInt(document.getElementById('MonNombre').value);
+    document.getElementById('MonNombre').value = "";
+    iCpt++; // on a joué un tour de plus
+    if (iNombreSaisie == inombre) {
+        document.getElementById("resultat").innerText += "Bravo c'était bien : " + inombre + " Vous avez trouvé en " + iCpt + " coup(s)" + "\n";
+        document.getElementById('btnJouer').style.display = 'block'; // affiche le bouton Jouer pour rejouer
+        document.getElementById('btnValidez').style.display = 'none';
+    } else if (iNombreSaisie > inombre) {
+        document.getElementById("resultat").innerText += "C'est plus petit que : " + iNombreSaisie + "\n";
+    }
+    else {
+        document.getElementById("resultat").innerText += "C'est plus grand que : " + iNombreSaisie + "\n";
     }
 }
 
-var action_au_click = function () {
-    var inombre_aleatoire_entre_0_et_1 = Math.random(); //entre 0 et 1
-    var inombre_aleatoire_entre_0_et_99_avec_virgule = inombre_aleatoire_entre_0_et_1 * 100; // entre 0 et 99
-    var inombre_aleatoire_entre_0_et_99_sans_virgule = Math.floor(inombre_aleatoire_entre_0_et_99_avec_virgule); // idem sans la virgule
-    document.getElementById("resul").innerText += "Nombre généré :  "+ inombre_aleatoire_entre_0_et_99_sans_virgule+ "\n";
-};
+var btnJouer = document.getElementById('btnJouer');
+btnJouer.addEventListener("click", generation_nombre_aleatoire, false);
 
-var btnDOM = document.getElementById('btnDOM');
-btnDOM.addEventListener("click", action_au_click, false);
+var btnValidez = document.getElementById('btnValidez');
+btnValidez.addEventListener("click", comparaison, false);
